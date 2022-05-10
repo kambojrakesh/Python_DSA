@@ -20,3 +20,4 @@ import itertools
 l2 = list( value for value in test_dict.values())
 
 print(list(itertools.chain(*l2)))
+
