@@ -1,70 +1,41 @@
-# BST  </br>
-# Insert and Search complexity - O(log n)
-# At most two tree node </br>
-# Left hand always smaller values  </br>
-# Right hand side always higher values </br>
-# No duplicates are allowed </br>
-# Two traversal search - Breadth first search and depth first search </br>
-# Depth first search - In order traversal , Pre order traversal, Post order traversal </br>
-
-class BST:
+class Tree:
     def __init__(self, data):
+        self.parent = None
+        self.children = []
         self.data = data
-        self.left = None
-        self.right = None
 
-    def add_child(self, data):
-        if data == self.data:
-            return
+    def addd_children(self, child):
+        child.parent = self
+        self.children.append(child)
 
-        if data < self.data:
-            if self.left:
-                self.left.add_child(data)
-            else:
-                self.left = BST(data)
-        else:
-            if self.right:
-                self.right.add_child(data)
-            else:
-                self.right = BST(data)
+    def level(self):
+        p = self.parent
+        level = 0
 
-    def in_order_traversal(self):
-        elements = []
+        while p:
+            p = p.parent
+            level += 1
 
-        if self.left:
-            elements += self.left.in_order_traversal()
+        return level
 
-        elements.append(self.data)
-        if self.right:
-            elements += self.right.in_order_traversal()
+    def print_tree(self):
+        spaces = " " * self.level() * 3
+        prefix = spaces + "|---" if self.parent else ""
+        print(prefix + self.data)
 
-        return elements
+        if self.children:
+            for child in self.children:
+                child.print_tree()
 
-    def search(self, val):
-        if self.data == val:
-            return True
+def build_tree():
+    root = Tree("Electronics")
+    tv = Tree("TV")
+    mobiles = Tree("Mobiles")
 
-        if val < self.data:
-            if self.left:
-                return self.left.search(val)
+    root.addd_children(tv)
+    root.addd_children(mobiles)
 
-        if val > self.data:
-            if self.right:
-                self.right.search(val)
+    root.print_tree()
 
-        return False
-
-def build_tree(elements):
-    root = BST(elements[0])
-
-    for i in range(1, len(elements)):
-        root.add_child(elements[i])
-
-    return root
-
-if __name__=='__main__':
-    elements = [17, 87, 9, 3, 32, 14, 56, 7]
-
-    root = build_tree(elements)
-    print(root.in_order_traversal())
-    print(root.search(19))
+if __name__=="__main__":
+    build_tree()
