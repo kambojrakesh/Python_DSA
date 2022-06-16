@@ -1,7 +1,5 @@
-from collections import Counter
-test_list = [4, 6, 6, 4, 2, 2, 4, 4, 8, 5, 8]
-
-
-
-res = {key : [key] * val for key, val in Counter(test_list).items()}
+test_str = 'gfg is best for geeks'
+test_dict = {'geeks' : 1, 'best': 6}
+ 
+res = " ".join(ele  for ele in test_str.split() if ele not in test_dict)
 print(res)
