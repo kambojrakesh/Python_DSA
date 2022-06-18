@@ -1,5 +1,18 @@
-test_str = 'gfg is best for geeks'
-test_dict = {'geeks' : 1, 'best': 6}
- 
-res = " ".join(ele  for ele in test_str.split() if ele not in test_dict)
-print(res)
+val = [1, 1, 1, 5, 5, 3, 1, 3, 3, 1, 4, 4, 4, 2, 2, 2, 2]
+
+
+from collections import Counter 
+counter = Counter()
+
+dc = {}
+for i in val:
+    dc[i] = val.count(i)
+    
+print(dc)
+
+
+count = {1:8}
+for i in val:
+    count[i] = count.get(i) 
+    
+print(count)
