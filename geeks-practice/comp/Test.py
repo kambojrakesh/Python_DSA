@@ -1,10 +1,15 @@
-from collections import defaultdict  
-test_dict = {'gfg' : {'x' : 5, 'y' : 6}, 'is' : {'x' : 1, 'y' : 4},
-                                      'best' : {'x' : 8, 'y' : 3}}
-#[(‘x’, (5, 1, 8)), (‘y’, (6, 4, 3))]
-res = defaultdict(tuple)
-for key, val in test_dict.items():
-    for ele in val:
-        res[ele] += (val[ele], )
+test_dict = {'Gfg' : 1, 'is' : 2, 'best' : 3, 'for' : 4, 'geeks' : 5, 'CS' : 6}
+ 
+d = dict()
+res = []
+i = 0;
+for key, v in test_dict.items():
+    d[key] = test_dict[key]
+    if i % 2 == 0:
+        res.append(d)
+        d = dict()
         
-print(str(list(res.items())))
+    i+=1
+    
+    
+print(res)

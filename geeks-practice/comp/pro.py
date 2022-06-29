@@ -79,3 +79,28 @@ dict = {'a': 'Geeks', 'b': 'For', 'c': 'geeks'}
 ls = list(map(itemgetter(1), dict.items()))    
 print(ls)
 
+-----------------------
+
+from collections import defaultdict  
+test_dict = {'gfg' : {'x' : 5, 'y' : 6}, 'is' : {'x' : 1, 'y' : 4},
+                                      'best' : {'x' : 8, 'y' : 3}}
+#[(‘x’, (5, 1, 8)), (‘y’, (6, 4, 3))]
+
+res = []
+
+print([(x, tuple(t[x] for t in test_dict.values())) for x in test_dict['gfg']])
+
+
+
+from collections import defaultdict  
+test_dict = {'gfg' : {'x' : 5, 'y' : 6}, 'is' : {'x' : 1, 'y' : 4},
+                                      'best' : {'x' : 8, 'y' : 3}}
+#[(‘x’, (5, 1, 8)), (‘y’, (6, 4, 3))]
+
+res = defaultdict(tuple)
+
+for key, val in test_dict.items():
+    for x in val:
+        res[x] += (val[x],)
+        
+print(list(res.items()))
