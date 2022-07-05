@@ -1,7 +1,8 @@
-# initializing list
-test_list = ["Gfg", "is", "Good", "for", "Geeks"]
-K = "Gfg"
-# initializing Dictionary
-test_dict = {"Gfg" : 2, "is" : 4, "Best" : 6}
+from operator import itemgetter
+test_dict = {'a': 'Geeks', 'b': 'For', 'c': 'geeks'}
+# Using chain.from_iterable()
+from itertools import chain
+from itertools import repeat
 
-print([K in sub for sub in [test_dict, test_list]])
+res = dict(zip(range(4), repeat(test_dict))) # return 4 same key valu pair for test_dic
+print(repeat(test_dict))
