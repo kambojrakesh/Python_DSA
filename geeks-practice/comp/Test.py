@@ -1,8 +1,20 @@
-from operator import itemgetter
-test_dict = {'a': 'Geeks', 'b': 'For', 'c': 'geeks'}
-# Using chain.from_iterable()
-from itertools import chain
-from itertools import repeat
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jul  5 16:11:26 2022
 
-res = dict(zip(range(4), repeat(test_dict))) # return 4 same key valu pair for test_dic
-print(repeat(test_dict))
+@author: Vikki
+"""
+s1 = "abcabcbb"
+s = list(s1)
+
+sub = []
+t = set()
+for i  in range(0, len(s)):    
+    if s[i] in sub:
+        t.add(len(sub)+ 1)
+        sub = []            
+    sub.append(s[i])
+
+
+
+print(len(t))
