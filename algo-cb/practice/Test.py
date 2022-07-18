@@ -1,14 +1,10 @@
+from collections import defaultdict
+# initializing dictionary
+test_dict = {'gfg' : [1, 2, 3], 'is' : [1, 4], 'best' : [4, 2]} 
+# Using defaultdict() + loop
+res = defaultdict(list)
+for key, val in test_dict.items():
+    for ele in val:
+        res[ele].append(key)
 
-
-s = "abcabcde"
-ll = list(s)
-charSet = set()
-
-l = 0
-res = []
-
-for r in range(len(s)):
-    if ll[r] not in res:
-        res.append(ll[l:r])
-        
 print(res)
