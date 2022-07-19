@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jul 19 18:41:54 2022
+
+@author: Vikki
+"""
 class Node:
     def __init__(self, data, next):
         self.data = data
