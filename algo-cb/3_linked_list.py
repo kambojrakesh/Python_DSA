@@ -10,8 +10,8 @@ class Node:
         self.next = next
         
 class Linkedlist:
-    def __init__(self,header = None):
-        self.header = header
+    def __init__(self,head = None):
+        self.head = head
     
     def insert_at_begining(self, data):
         node = Node(data, self.head)
@@ -79,7 +79,7 @@ class Linkedlist:
             itr = itr.next
             count+=1
  
-    def add_at(self, index, data):
+    def insert_at(self, index, data):
         if index<0 or index>self.get_length():
             raise Exception("Invalid Index")
 
