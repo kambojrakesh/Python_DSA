@@ -38,3 +38,5 @@ t["march 6"] = 310
 t["march 7"] = 420
 t["march 8"] = 67
 t["march 17"] = 63457
+
+print(t["march 6"])
