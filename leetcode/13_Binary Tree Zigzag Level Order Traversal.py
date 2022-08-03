@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
 """
+Created on Mon Aug  1 17:58:33 2022
+
+@author: Vikki
+"""
+# -*- coding: utf-8 -*-
+"""
 Created on Sun Jul 31 13:17:52 2022
 
 @author: Vikki
@@ -93,33 +99,43 @@ def build_tree(elements):
 
 from collections import deque  
 from typing import List  
+
+        
 class Solution:
-    def levelOrder(self, root: BST) -> List[List[int]]:
-        res = 0
+    def zigzagLevelOrder(self, root: BST) -> List[List[int]]:
         
-        q = deque()        
-        q.append(root)
+        if root == None:
+            return []
         
-        while q:
-            qLen = len(q)
-            level = []
-            for i in range(qLen):
-                node = q.popleft()
-                if node:
-                    print(res)
-                    res += node.data
-                    
-                    q.append(node.right)
+        result = []
+        stack = [root]
+        diraction = 1
         
-            #res.append(level)
-        return res
         
-    
+        while stack:
+            temp = []
+            for i in range(len(stack)):
+                node = stack.pop(0)
+                
+                temp.append(node.data)
+                if node.left != None:
+                    stack.append(node.left)
+                if node.right != None:
+                    stack.append(node.right)
+                        
+            if diraction % 2 == 0:
+                result.append(temp[::-1])
+            else:
+                result.append(temp[::1])
+            diraction += 1     
+
+                
+        return result           
 if __name__=="__main__":
     ls = [-10,9,20,15,7]
 
     bst = build_tree(ls)
     
     s = Solution()
-    print(s.levelOrder(bst))
+    print(s.zigzagLevelOrder(bst))
     
