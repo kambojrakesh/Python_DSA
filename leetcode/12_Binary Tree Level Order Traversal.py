@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Jul 31 13:17:52 2022
+
+@author: Vikki
+"""
 class BST:
     def __init__(self, data):
         self.right = None
@@ -85,35 +91,35 @@ def build_tree(elements):
 
     return root
 
-    
-import math    
+from collections import deque  
+from typing import List  
 class Solution:
-    def isValidBST(self, root: BST) -> bool:
-        if not root:
-            return True
-
-        stack = [(root, -math.inf, math.inf)]
+    def levelOrder(self, root: BST) -> List[List[int]]:
+        res = 0
         
-        while stack:
-            root, lower, upper = stack.pop()
-            if not root:
-                continue
-            val = root.data
-            print(val, lower, upper)
-            if val <= lower or val >= upper:
-                return False
-            stack.append((root.right, val, upper))
-            stack.append((root.left, lower, val))
-        return True
-    
-    
-    
+        q = deque()        
+        q.append(root)
+        
+        while q:
+            qLen = len(q)
+            level = []
+            for i in range(qLen):
+                node = q.popleft()
+                if node:
+                    print(res)
+                    res += node.data
+                    q.append(node.left)
+                    q.append(node.right)
+        
+            #res.append(level)
+        return res
+        
     
 if __name__=="__main__":
-    ls = [10, 5, 1, 7, 40, 50]
+    ls = [-10,9,20,15,7]
 
     bst = build_tree(ls)
     
     s = Solution()
-    print(s.isValidBST(bst))
+    print(s.levelOrder(bst))
     
