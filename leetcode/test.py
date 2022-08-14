@@ -4,17 +4,14 @@ Created on Tue Jul 26 15:13:59 2022
 
 @author: Vikki
 """
-s = "abca"
-res = 0
-charSet = set()
-l =  0
-for i in range(len(s)):
-    while s[i] in charSet:
-        charSet.remove(s[l])
-        l += 1
-    
-    charSet.add(s[i])
-    print(i, l, charSet)
-    
-    res = max(res, i - l + 1)
-print(res)    
+s = "abc"
+
+max_len = 1
+size = len(s)
+dp=[[False]*size for _ in range(size)]
+for start in range(size-1,-1,-1):
+    for end in range(start,size):
+        print(start, end)
+        
+        
+print(dp)
