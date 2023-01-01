@@ -1,0 +1,19 @@
+def insertion_sort(x):
+    """Sorts x inplace using insertion sort."""
+    
+    n = len(x)
+    
+    for i in range(n):
+        # Get the index of the smallest value from location i onward
+        # my code here
+        min_ind = i
+        for j in range(i+1, n):
+            if x[j] < x[min_ind]:
+                min_ind = j
+            print(min_ind)
+        x[i], x[min_ind] = x[min_ind], x[i] 
+        # my code here
+
+x = [7, 9,1000,4,-12]
+insertion_sort(x)
+x

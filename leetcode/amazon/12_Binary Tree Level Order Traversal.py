@@ -95,10 +95,10 @@ from collections import deque
 from typing import List  
 class Solution:
     def levelOrder(self, root: BST) -> List[List[int]]:
-        res = 0
-        
+        res = []
         q = deque()        
         q.append(root)
+        
         
         while q:
             qLen = len(q)
@@ -106,17 +106,18 @@ class Solution:
             for i in range(qLen):
                 node = q.popleft()
                 if node:
-                    print(res)
-                    res += node.data
-                    
-                    q.append(node.right)
-        
-            #res.append(level)
+                    level.append(node.data)
+                    if node.left:
+                        q.append(node.left)
+                    if node.right:
+                        q.append(node.right)
+            if level:
+                res.append(level)
         return res
         
     
 if __name__=="__main__":
-    ls = [-10,9,20,15,7]
+    ls = [3,9,20,null,null,15,7]
 
     bst = build_tree(ls)
     

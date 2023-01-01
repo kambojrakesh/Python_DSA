@@ -40,7 +40,7 @@ class Graph:
             if node not in path:
                 sp = self.get_shortest_path(node, end, path)
                 if sp:
-                    if shortest_path is None or len(sp) < len(shortest_path):
+                    if shortest_path is None or len(sp) > len(shortest_path):
                         shortest_path = sp
 
         return shortest_path
@@ -58,3 +58,7 @@ if __name__=="__main__":
     #paths = rout_graph.get_path("Mumbai", "New York")
     shortest_path = rout_graph.get_shortest_path("Mumbai", "Toronto")
     print(shortest_path)
+
+
+
+
